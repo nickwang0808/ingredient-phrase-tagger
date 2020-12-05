@@ -11,7 +11,8 @@ find . -name "*.pyc" -delete
 
 # Run unit tests and calculate code coverage.
 coverage run \
-  -m unittest discover
+  --source ingredient_phrase_tagger \
+  --module unittest discover
 coverage report
 
 # Check that source has correct formatting.
