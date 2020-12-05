@@ -7,17 +7,6 @@ jobs:
       - run:
           name: Do build checks
           command: ./docker_build
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - .coverage
-  upload-coverage:
-    docker:
-      - image: circleci/python:2.7.16
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ./
       - run:
           name: Copy the .coverage.* file from the Docker container to the local filesystem
           command: docker cp ingredient-phrase-tagger-container:/app/$(docker exec -it ingredient-phrase-tagger-container bash -c "ls -a .coverage.*" | tr -d '\r') ./
@@ -32,27 +21,8 @@ jobs:
             . venv/bin/activate
             pip install pyyaml coveralls
             coveralls
-  test-training-e2e:
-    machine: true
-    steps:
-      - checkout
-      - run:
-          name: Run training e2e test
-          command: ./scripts/docker-test-training-e2e
-  test-classification-e2e:
-    machine: true
-    steps:
-      - checkout
-      - run:
-          name: Run classification e2e test
-          command: ./scripts/test-classification-e2e
 workflows:
   version: 2
   all-tests:
     jobs:
       - build
-      - upload-coverage:
-          requires:
-            - build
-      - test-training-e2e
-      - test-classification-e2e
