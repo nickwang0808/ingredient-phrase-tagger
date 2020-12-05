@@ -26,4 +26,4 @@ yapf \
 pyflakes bin/ ingredient_phrase_tagger/
 
 # Run E2E tests.
-bash ./test_e2e
+#bash ./test_e2e # DEBUG
