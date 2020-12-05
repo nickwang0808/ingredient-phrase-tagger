@@ -10,6 +10,17 @@ jobs:
       - run:
           name: Copy the .coverage.* file from the Docker container to the local filesystem
           command: docker cp ingredient-phrase-tagger-container:/app/$(docker exec -it ingredient-phrase-tagger-container bash -c "ls -a .coverage.*" | tr -d '\r') ./
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - .coverage*
+  upload-coverage:
+    docker:
+      - image: circleci/python:2.7.16
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
       - run:
           name: Use coverage combine to canonicalize the source paths
           command: coverage combine
@@ -26,3 +37,4 @@ workflows:
   all-tests:
     jobs:
       - build
+      - upload-coverage
