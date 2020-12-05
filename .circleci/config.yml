@@ -22,16 +22,19 @@ jobs:
       - attach_workspace:
           at: ./
       - run:
-          name: Install coverage
-          command: pip install coverage
-      - run:
-          name: Use coverage combine to canonicalize the source paths
-          command: coverage combine
-      - run:
-          name: Install and run Coveralls
+          name: create venv
           command: |
             mkdir -p ./venv
             virtualenv ./venv
+      - run:
+          name: Use coverage combine to canonicalize the source paths
+          command: |
+            . venv/bin/activate
+            pip install coverage
+            coverage combine
+      - run:
+          name: Install and run Coveralls
+          command: |
             . venv/bin/activate
             pip install pyyaml coveralls
             coveralls
