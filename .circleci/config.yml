@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  unit-tests:
+  build:
     machine: true
     steps:
       - checkout
@@ -38,18 +38,21 @@ jobs:
       - checkout
       - run:
           name: Run training e2e test
-          command: scripts/docker-test-training-e2e
+          command: ./scripts/docker-test-training-e2e
   test-classification-e2e:
     machine: true
     steps:
       - checkout
       - run:
           name: Run classification e2e test
-          command: scripts/test-classification-e2e
+          command: ./scripts/test-classification-e2e
 workflows:
   version: 2
   all-tests:
     jobs:
-      - unit-tests
+      - build
+      - upload-coverage:
+          requires:
+            - build
       - test-training-e2e
       - test-classification-e2e
