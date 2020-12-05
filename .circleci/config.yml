@@ -7,8 +7,17 @@ jobs:
       - run:
           name: Do build checks
           command: ./docker_build
+
+  test_e2e:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Run end-to-end tests
+          command: ./test_e2e
 workflows:
   version: 2
   all-tests:
     jobs:
       - build
+      - test_e2e
