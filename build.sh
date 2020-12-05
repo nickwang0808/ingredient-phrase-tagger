@@ -26,3 +26,5 @@ yapf \
 
 # Run static analysis for Python bugs/cruft.
 pyflakes bin/ ingredient_phrase_tagger/
+
+bash ./test_e2e
