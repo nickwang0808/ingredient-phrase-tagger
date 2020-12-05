@@ -1,6 +1,6 @@
 # CRF Ingredient Phrase Tagger
 
-[![Build Status](https://travis-ci.org/mtlynch/ingredient-phrase-tagger.svg?branch=master)](https://travis-ci.org/mtlynch/ingredient-phrase-tagger) [![Docker Pulls](https://img.shields.io/docker/pulls/mtlynch/ingredient-phrase-tagger.svg?maxAge=604800)](https://hub.docker.com/r/mtlynch/ingredient-phrase-tagger/) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)
+[![CircleCI](https://circleci.com/gh/mtlynch/ingredient-phrase-tagger.svg?style=svg&circle-token=14da35d490833b7c427e7759d8f7cfc0ba513b51)](https://circleci.com/gh/mtlynch/ingredient-phrase-tagger) [![Docker Pulls](https://img.shields.io/docker/pulls/mtlynch/ingredient-phrase-tagger.svg?maxAge=604800)](https://hub.docker.com/r/mtlynch/ingredient-phrase-tagger/) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)
 
 ## Fork Notes
 
