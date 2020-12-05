@@ -12,6 +12,7 @@ find . -name "*.pyc" -delete
 # Run unit tests and calculate code coverage.
 coverage run \
   -m unittest discover
+coverage report
 
 # Check that source has correct formatting.
 yapf \

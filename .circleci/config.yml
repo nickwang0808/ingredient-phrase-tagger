@@ -7,42 +7,8 @@ jobs:
       - run:
           name: Do build checks
           command: ./docker_build
-      - run:
-          name: Copy the .coverage.* file from the Docker container to the local filesystem
-          command: docker cp ingredient-phrase-tagger-container:/app/$(docker exec -it ingredient-phrase-tagger-container bash -c "ls -a .coverage.*" | tr -d '\r') ./
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - .coverage*
-  upload-coverage:
-    docker:
-      - image: circleci/python:2.7.16
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ./
-      - run:
-          name: create venv
-          command: |
-            mkdir -p ./venv
-            virtualenv ./venv
-      - run:
-          name: Use coverage combine to canonicalize the source paths
-          command: |
-            . venv/bin/activate
-            pip install coverage
-            coverage combine
-      - run:
-          name: Install and run Coveralls
-          command: |
-            . venv/bin/activate
-            pip install pyyaml coveralls
-            coveralls
 workflows:
   version: 2
   all-tests:
     jobs:
       - build
-      - upload-coverage:
-          requires:
-            - build
