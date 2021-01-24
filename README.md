@@ -2,29 +2,38 @@
 
 [![CircleCI](https://circleci.com/gh/mtlynch/ingredient-phrase-tagger.svg?style=svg&circle-token=14da35d490833b7c427e7759d8f7cfc0ba513b51)](https://circleci.com/gh/mtlynch/ingredient-phrase-tagger) [![Docker Pulls](https://img.shields.io/docker/pulls/mtlynch/ingredient-phrase-tagger.svg?maxAge=604800)](https://hub.docker.com/r/mtlynch/ingredient-phrase-tagger/) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)
 
+## Fork Notes x2
+
+This is a fork of Michael Lynch's fork of the nyt's ingredients-phrase-tagger, this fork added additional script to help execute the parser without -it flag, also incorporated the trained model file for ease of deployment.
+
+to use simply run
+`docker run <container name> ./parse "1 cup beef \n 1 liter water"`
+
+multiple inputs can be supplied by separating with `\n` character
+
 ## Fork Notes
 
 This is a fork of the original [NY Times ingredient-phrase-tagger](https://github.com/NYTimes/ingredient-phrase-tagger). This fork is maintained by [Michael Lynch](https://github.com/mtlynch)
 
 This fork maintains the design of the original ingredient-phrase-tagger, but adds bugfixes and additional features to aid in future development:
 
-* Adds a [Docker image](https://hub.docker.com/r/mtlynch/ingredient-phrase-tagger/) for easy deployment.
-* Adds a [continuous integration build](https://travis-ci.org/mtlynch/ingredient-phrase-tagger) on every check-in.
-* Adds unit tests.
-* Adds end-to-end tests.
-* Enforces rules for source formatting and linting.
+- Adds a [Docker image](https://hub.docker.com/r/mtlynch/ingredient-phrase-tagger/) for easy deployment.
+- Adds a [continuous integration build](https://travis-ci.org/mtlynch/ingredient-phrase-tagger) on every check-in.
+- Adds unit tests.
+- Adds end-to-end tests.
+- Enforces rules for source formatting and linting.
 
 These improvements were described in a series of blog posts on [mtlynch.io](https://mtlynch.io):
 
-* [Resurrecting a Dead Library: Part One - Resuscitation](https://mtlynch.io/resurrecting-1/)
-* [Resurrecting a Dead Library: Part Two - Stabilization](https://mtlynch.io/resurrecting-2/)
-* [Resurrecting a Dead Library: Part Three - Rehabilitation](https://mtlynch.io/resurrecting-3/)
+- [Resurrecting a Dead Library: Part One - Resuscitation](https://mtlynch.io/resurrecting-1/)
+- [Resurrecting a Dead Library: Part Two - Stabilization](https://mtlynch.io/resurrecting-2/)
+- [Resurrecting a Dead Library: Part Three - Rehabilitation](https://mtlynch.io/resurrecting-3/)
 
 ## Zestful
 
 [Zestful](https://zestfuldata.com) is a managed ingredient-parsing service based on this library. It has higher accuracy and more frequent updates:
 
-* https://zestfuldata.com
+- https://zestfuldata.com
 
 ## Overview
 
@@ -121,20 +130,18 @@ Black pepper, to taste' | bin/parse-ingredients.py --model-file $MODEL_FILE
 
 ## Authors
 
-* [Erica Greene][eg]
-* [Adam Mckaig][am]
-* [Michael Lynch](https://github.com/mtlynch)
-
+- [Erica Greene][eg]
+- [Adam Mckaig][am]
+- [Michael Lynch](https://github.com/mtlynch)
 
 ## License
 
 [Apache 2.0][license].
 
-
-[nytc]:     http://cooking.nytimes.com
-[crf_tut]:  http://people.cs.umass.edu/~mccallum/papers/crf-tutorial.pdf
-[crfpp]:    https://taku910.github.io/crfpp/
+[nytc]: http://cooking.nytimes.com
+[crf_tut]: http://people.cs.umass.edu/~mccallum/papers/crf-tutorial.pdf
+[crfpp]: https://taku910.github.io/crfpp/
 [openblog]: http://open.blogs.nytimes.com/2015/04/09/extracting-structured-data-from-recipes-using-conditional-random-fields/?_r=0
-[eg]:       mailto:ericagreene@gmail.com
-[am]:       http://github.com/adammck
-[license]:  https://github.com/NYTimes/ingredient-phrase-tagger/blob/master/LICENSE.md
+[eg]: mailto:ericagreene@gmail.com
+[am]: http://github.com/adammck
+[license]: https://github.com/NYTimes/ingredient-phrase-tagger/blob/master/LICENSE.md

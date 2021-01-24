@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# run the parse command and expose a less verbose way to do it
+
+
+printf "$1" | bin/parse-ingredients.py --model-file $MODEL_FILE
+# echo "hello"

@@ -20,4 +20,9 @@ RUN apt-get update -y && \
 ADD . /app
 WORKDIR /app
 
+# added model file to ./model dir better for serverless deployment
+ENV MODEL_FILE=./model_file/model.crfmodel
+# guess scripts also need x permission to run in containers
+RUN chmod +x ./parse
+
 RUN pip3 install .
