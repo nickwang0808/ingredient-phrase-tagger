@@ -11,7 +11,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.schema-version="1.0.0-rc1"
 
 RUN apt-get update -y && \
-    apt-get install -y git python3.9 python3-setuptools python3-pip && \
+    apt-get install -y git python3.9 python3-setuptools python3-pip curl && \
     rm -Rf /usr/share/doc && \
     rm -Rf /usr/share/man && \
     apt-get autoremove -y && \
@@ -26,3 +26,19 @@ ENV MODEL_FILE=./model_file/model.crfmodel
 RUN chmod +x ./parse
 
 RUN pip3 install .
+
+ENV NODE_VERSION=12.6.0
+# RUN apt-get install -y curl
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+ENV NVM_DIR=/root/.nvm
+RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
+ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
+RUN node --version
+RUN npm --version
+
+# COPY package*.json ./
+RUN npm install
+
+ENTRYPOINT [ "node", "index.js" ]

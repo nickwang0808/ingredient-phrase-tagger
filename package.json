@@ -1,0 +1,26 @@
+{
+  "name": "ingredient-phrase-tagger",
+  "version": "1.0.0",
+  "description": "[![CircleCI](https://circleci.com/gh/mtlynch/ingredient-phrase-tagger.svg?style=svg&circle-token=14da35d490833b7c427e7759d8f7cfc0ba513b51)](https://circleci.com/gh/mtlynch/ingredient-phrase-tagger) [![Docker Pulls](https://img.shields.io/docker/pulls/mtlynch/ingredient-phrase-tagger.svg?maxAge=604800)](https://hub.docker.com/r/mtlynch/ingredient-phrase-tagger/) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickwang0808/ingredient-phrase-tagger.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickwang0808/ingredient-phrase-tagger/issues"
+  },
+  "homepage": "https://github.com/nickwang0808/ingredient-phrase-tagger#readme",
+  "dependencies": {
+    "recipe-ingredient-parser-v2": "^1.1.1"
+  }
+}
